@@ -8,23 +8,29 @@ function onReady(){
   $('#formDiv').hide();
 //toggle form
   $('#addItem').on('click', function(){
-    $('#formDiv').fadeIn(1000);
+    $('#formDiv').fadeIn('slow');
     $('#addItem').hide();
     });
 //submit button
   $('#submitItem').on('click', function(){
+    if( $('#item').val() === '' || $('#item').val() === undefined ||
+    $('#dueDate').val() === '' || $('#dueDate').val() === undefined ||
+    $('#des').val() === '' || $('#des').val() === undefined ){
+    } else {
     toDoInfo();
-    $('#formDiv').fadeOut(1000);
-    $('#addItem').fadeIn(1000);
+    $('#formDiv').fadeOut('fast');
+    $('#addItem').fadeIn('slow');
     $('#toDoSquares').empty();
     displayToDo();
     emptyBoxes();
+      }
     });
 
     //delete buttons
   $('#toDoSquares').on('click', '#buttonX', function() {
       var id = $(this).data('id');
       if (confirm("Are you sure?")) {
+      $(this).parent().fadeOut('slow');
       deleteInfo(id);
       displayToDo();
         }
@@ -33,6 +39,7 @@ function onReady(){
     $('#completeSquares').on('click', '#buttonX', function() {
         var id = $(this).data('id');
         if (confirm("Are you sure?")) {
+        $(this).parent().fadeOut('slow');
         deleteInfo(id);
         displayToDo();
         }
@@ -56,7 +63,7 @@ var toDoInfo = function() {
   console.log(toDoToSend);
   $.ajax({
     type: 'POST',
-    url: '/todo',
+    url: '/todo/post',
     data: toDoToSend,
     success: function(response) {
       console.log('ribbet:', response);
@@ -67,7 +74,7 @@ var toDoInfo = function() {
 var displayToDo = function() {
   $.ajax({
     type: 'GET',
-    url: '/todo',
+    url: '/todo/',
     success: function(response) {
       console.log('meow', response);
 
@@ -92,10 +99,10 @@ var displayToDo = function() {
         var $box = $($divBox);
 
         if(response[i].complete == 'false'){
-          $('#toDoSquares').append($box);
+          $('#toDoSquares').append($box).hide().fadeIn('slow');
           $($box).css('background-color', color);
         } else {
-          $('#completeSquares').append($box);
+          $('#completeSquares').append($box).hide().fadeIn('slow');
           $($box).css('background-color', color);
       }
 
@@ -109,7 +116,7 @@ var completeItem = function(id){
     id: id
   };
   $.ajax({
-    url: '/todo',
+    url: '/todo/put',
     type: 'PUT',
     data: completeItem,
     success: function(response) {
@@ -124,7 +131,7 @@ var deleteInfo = function(id) {
   };
   $.ajax({
     type: 'DELETE',
-    url: '/todo',
+    url: '/todo/delete',
     data: deleteRow,
     success: function(response) {
       console.log('back from server with:', response);

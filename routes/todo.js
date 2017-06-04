@@ -1,5 +1,18 @@
 var express = require('express');
 var router = express.Router();
+var pg = require('pg');
+
+//globals
+
+var port = 2017;
+var config = {
+  database: 'tododb',
+  host: 'localhost',
+  port: 5432,
+  max: 30
+};
+
+var pool = new pg.Pool(config);
 
 router.get('/', function(req, res) {
   console.log('get list');
@@ -11,7 +24,7 @@ router.get('/', function(req, res) {
     } else {
       console.log('connected to db');
       var toDoList = [];
-      var resultSet = connection.query('SELECT * FROM todo_table');
+      var resultSet = connection.query('SELECT * FROM todo_table ORDER BY duedate');
       resultSet.on('row', function(row) {
         toDoList.push(row);
       }); //end resultSet
@@ -40,4 +53,37 @@ router.post('/post', function(req, res) {
   }); //end pool connect
 }); // end post
 
+router.put('/put', function(req, res) {
+  console.log('todo delete');
+  pool.connect(function(err, connection, done) {
+    if (err) {
+      console.log('error');
+      done();
+      res.send(400);
+    } else {
+      console.log('connected to database', req.body);
+      connection.query('UPDATE todo_table SET complete = $1 WHERE id = $2', [true, req.body.id]);
+      done();
+      res.send(200);
+    } //end else
+  }); //end pool connect
+
+});
+
+router.delete('/delete', function(req, res) {
+  console.log('todo delete');
+  pool.connect(function(err, connection, done) {
+    if (err) {
+      console.log('error');
+      done();
+      res.send(400);
+    } else {
+      console.log('connected to database', req.body);
+      connection.query('DELETE FROM todo_table WHERE id = $1', [req.body.id]);
+      done();
+      res.send(200);
+    } //end else
+  }); //end pool connect
+
+});
 module.exports = router;

@@ -6,16 +6,6 @@ input, label {
 }
 #addItemDiv{
   height: 160px;
-  border-bottom: 2px solid black;
-  margin-bottom: 20px
-
-}
-#toDoSquares{
-  border-bottom: 2px solid black;
-  margin-bottom: 20px;
-}
-#completeSquares{
-
 }
 #compBtn{
   float: right;
@@ -25,6 +15,10 @@ input, label {
 }
 p{
   margin-left: 4px;
+}
+.borderDiv{
+  border-top: 2px solid black;
+  margin-top: 20px;
 }
 .toDoItem{
   width: 200px;
