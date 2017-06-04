@@ -1,0 +1,36 @@
+input, label {
+    display:block;
+}
+#submitItem{
+  display: block;
+}
+#addItemDiv{
+  height: 160px;
+  border-bottom: 2px solid black;
+  margin-bottom: 20px
+
+}
+#toDoSquares{
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+}
+#completeSquares{
+
+}
+#compBtn{
+  float: right;
+}
+#buttonX{
+  float: right;
+}
+p{
+  margin-left: 4px;
+}
+.toDoItem{
+  width: 200px;
+  height: 200px;
+  overflow: auto;
+  display: inline-block;
+  border: 2px solid black;
+  margin: 4px;
+}
