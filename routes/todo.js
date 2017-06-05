@@ -31,16 +31,9 @@ router.get('/', function(req, res) {
         done();
         res.send(toDoList);
       }); //end end resultSet
-
     }
   }); //done pool get
 }); //end get
-
-// SELECT CONVERT(VARCHAR(2),MONTH(duedate)) + '-' + 
-//        CONVERT(VARCHAR(4),YEAR(duedate)) AS [MM-YYYY]
-// FROM todo_table
-// ORDER BY duedate
-
 
 router.post('/post', function(req, res) {
   console.log('got list:', req.body);
@@ -58,33 +51,34 @@ router.post('/post', function(req, res) {
   }); //end pool connect
 }); // end post
 
-router.put('/put', function(req, res) {
-  console.log('todo delete');
+router.put('/:id', function(req, res) {
+  console.log('todo PUT');
+  var id = req.params.id;
   pool.connect(function(err, connection, done) {
     if (err) {
       console.log('error');
       done();
       res.send(400);
     } else {
-      console.log('connected to database', req.body);
-      connection.query('UPDATE todo_table SET complete = $1 WHERE id = $2', [true, req.body.id]);
+      console.log('connected to database', id);
+      connection.query('UPDATE todo_table SET complete = $1 WHERE id = $2', [req.body.completeItem, id]);
       done();
       res.send(200);
     } //end else
   }); //end pool connect
-
 });
 
-router.delete('/delete', function(req, res) {
+router.delete('/:id', function(req, res) {
   console.log('todo delete');
+  var id = req.params.id;
   pool.connect(function(err, connection, done) {
     if (err) {
       console.log('error');
       done();
       res.send(400);
     } else {
-      console.log('connected to database', req.body);
-      connection.query('DELETE FROM todo_table WHERE id = $1', [req.body.id]);
+      console.log('connected to database', id);
+      connection.query('DELETE FROM todo_table WHERE id = $1', [id]);
       done();
       res.send(200);
     } //end else

@@ -105,20 +105,16 @@ var displayToDo = function() {
           $('#completeSquares').append($box).hide().fadeIn('slow');
           $($box).css('background-color', color);
       }
-
     }
-
   }
   }); //
 }; //end displaytodo
 var completeItem = function(id){
-  var completeItem = {
-    id: id
-  };
+
   $.ajax({
-    url: '/todo/put',
+    url: '/todo/'+ id,
     type: 'PUT',
-    data: completeItem,
+    data: {completeItem: true},
     success: function(response) {
     console.log('back from server with:', response);
     }
@@ -126,13 +122,10 @@ var completeItem = function(id){
 };
 
 var deleteInfo = function(id) {
-  var deleteRow = {
-    id: id
-  };
+
   $.ajax({
     type: 'DELETE',
-    url: '/todo/delete',
-    data: deleteRow,
+    url: '/todo/'+ id,
     success: function(response) {
       console.log('back from server with:', response);
       }
