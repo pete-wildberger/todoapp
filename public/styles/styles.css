@@ -22,7 +22,8 @@ height: 50px;
 width: 50px;
 }
 body {
-  font-family: 'Garamond';
+  font-family: 'Courier';
+  background-color: #BFD7EA;
 }
 p {
   margin-left: 4px;
@@ -34,6 +35,7 @@ button{
   color: #fff;
   text-align: center;
   text-decoration: none;
+  font-family: 'Courier';
   transition: background-color 0.2s ease-out,
               border-color 0.2s ease-out;
 }
@@ -45,8 +47,6 @@ button:hover,
 button:active {
   background-color: #fff;
     background-color: rgba(255, 255, 255, 0.4);
-    /*border-color: #fff;
-    border-color: rgba(255, 255, 255, 0.4);*/
     transition: background-color 0.3s ease-in,
                 border-color 0.3s ease-in;
 }
@@ -66,8 +66,9 @@ button:active {
   height: 220px;
   overflow: auto;
   display: inline-block;
-  border: 2px solid black;
+  border: 2px solid white;
   margin: 4px;
-  font-family: 'Garamond';
+  color: white;
+  font-family: 'Courier';
   font-size: 22px;
 }

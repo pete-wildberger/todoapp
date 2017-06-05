@@ -70,7 +70,6 @@ var toDoInfo = function() {
     } //end success
   }); //end ajax post
 };
-
 var displayToDo = function() {
   $.ajax({
     type: 'GET',
@@ -83,8 +82,8 @@ var displayToDo = function() {
 
       for(var i=0; i<response.length; i++){
 
-        var color = '#'+Math.floor(Math.random()*16777215).toString(16);
-        console.log(color);
+        var number = randomNumber(1, 4);
+        var color = randomColor(number);
 
         var $divBox = '<div class="toDoItem" >';
         $divBox += '<p>' + response[i].item + '</p>';
@@ -144,3 +143,23 @@ var emptyBoxes = function() {
   $('#dueDate').val('');
   $('#des').val('');
 };
+//make random number
+
+function randomNumber(min, max){
+    return  Math.floor(Math.random() * (1 + max - min) + min);
+}
+
+//change color
+
+function randomColor(number){
+  switch (number) {
+    case 1:
+      return color = '#087E8B';
+    case 2:
+      return color = '#0B3954';
+    case 3:
+      return color = '#FF5A5F';
+    case 4:
+      return color = '#C81D25';
+    }
+}
