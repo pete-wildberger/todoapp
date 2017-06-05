@@ -7,6 +7,7 @@ input, label {
 }
 #addItemDiv{
   height: 160px;
+
 }
 #compBtn{
   float: right;
@@ -19,6 +20,9 @@ float: right;
 border-radius: 50%;
 height: 50px;
 width: 50px;
+}
+#header{
+  text-align: center;
 }
 body {
   font-family: 'Courier';
@@ -58,6 +62,7 @@ button:active {
 .borderDiv{
   border-top: 2px solid black;
   margin-top: 20px;
+  text-align: center;
 }
 .toDoItem{
   border-radius: 25px;

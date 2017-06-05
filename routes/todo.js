@@ -4,7 +4,6 @@ var pg = require('pg');
 
 //globals
 
-var port = 2017;
 var config = {
   database: 'tododb',
   host: 'localhost',
