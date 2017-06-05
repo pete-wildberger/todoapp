@@ -5,5 +5,5 @@ CREATE TABLE todo_table (
     item character varying(80),
     duedate date,
     description text,
-    complete text,
+    complete text DEFAULT false
 );
