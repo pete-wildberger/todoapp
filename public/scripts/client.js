@@ -87,13 +87,13 @@ var displayToDo = function() {
         console.log(color);
 
         var $divBox = '<div class="toDoItem" >';
-        if(response[i].complete == 'false'){
-          $divBox += '<button data-id="' + response[i].id + '" id="compBtn">complete</button>';
-        }
-        $divBox += '<button data-id="' + response[i].id + '" id="buttonX">X</button>';
         $divBox += '<p>' + response[i].item + '</p>';
         $divBox += '<p>' + response[i].duedate.slice(0, 10) + '</p>';
         $divBox += '<p>' + response[i].description + '</p>';
+        if(response[i].complete == 'false'){
+          $divBox += '<button data-id="' + response[i].id + '" id="compBtn">&#x2714</button>';
+        }
+        $divBox += '<button data-id="' + response[i].id + '" id="buttonX">X</button>';
         $divBox += '</div>';
 
         var $box = $($divBox);
