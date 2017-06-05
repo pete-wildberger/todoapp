@@ -85,10 +85,11 @@ var displayToDo = function() {
 
         var number = randomNumber(1, 4);
         var color = randomColor(number);
+        var date = new Date(response[i].duedate);
 
         var $divBox = '<div class="toDoItem" >';
         $divBox += '<p>' + response[i].item + '</p>';
-        $divBox += '<p>' + response[i].duedate.slice(0, 10) + '</p>';
+        $divBox += '<p>' + date.toLocaleDateString() + '</p>';
         $divBox += '<p>' + response[i].description + '</p>';
         if(response[i].complete == 'false'){
           $divBox += '<button data-id="' + response[i].id + '" id="compBtn">&#x2714</button>';
