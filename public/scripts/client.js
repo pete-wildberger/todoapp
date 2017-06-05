@@ -70,6 +70,7 @@ var toDoInfo = function() {
     } //end success
   }); //end ajax post
 };
+
 var displayToDo = function() {
   $.ajax({
     type: 'GET',
@@ -115,7 +116,7 @@ var completeItem = function(id){
     id: id
   };
   $.ajax({
-    url: '/todo/put'+ id,
+    url: '/todo/put',
     type: 'PUT',
     data: completeItem,
     success: function(response) {
