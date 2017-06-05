@@ -36,6 +36,12 @@ router.get('/', function(req, res) {
   }); //done pool get
 }); //end get
 
+// SELECT CONVERT(VARCHAR(2),MONTH(duedate)) + '-' +
+//        CONVERT(VARCHAR(4),YEAR(duedate)) AS [MM-YYYY]
+// FROM todo_table
+// ORDER BY duedate
+
+
 router.post('/post', function(req, res) {
   console.log('got list:', req.body);
   pool.connect(function(err, connection, done) {
@@ -52,7 +58,7 @@ router.post('/post', function(req, res) {
   }); //end pool connect
 }); // end post
 
-router.put('/put', function(req, res) {
+router.put('/put:id', function(req, res) {
   console.log('todo delete');
   pool.connect(function(err, connection, done) {
     if (err) {

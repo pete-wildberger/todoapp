@@ -115,7 +115,7 @@ var completeItem = function(id){
     id: id
   };
   $.ajax({
-    url: '/todo/put',
+    url: '/todo/put'+ id,
     type: 'PUT',
     data: completeItem,
     success: function(response) {
