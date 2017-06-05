@@ -149,12 +149,12 @@ function randomNumber(min, max){
 function randomColor(number){
   switch (number) {
     case 1:
-      return color = '#087E8B';
+      return '#087E8B';
     case 2:
-      return color = '#0B3954';
+      return '#0B3954';
     case 3:
-      return color = '#FF5A5F';
+      return '#FF5A5F';
     case 4:
-      return color = '#C81D25';
+      return '#C81D25';
     }
 }
