@@ -27,24 +27,14 @@ function onReady(){
     });
 
     //delete buttons
-  $('#toDoSquares').on('click', '#buttonX', function() {
+  $('body').on('click', '#buttonX', function() {
       var id = $(this).data('id');
       if (confirm("Are you sure?")) {
       $(this).parent().fadeOut('slow');
       deleteInfo(id);
       displayToDo();
         }
-      return false;
     });
-    $('#completeSquares').on('click', '#buttonX', function() {
-        var id = $(this).data('id');
-        if (confirm("Are you sure?")) {
-        $(this).parent().fadeOut('slow');
-        deleteInfo(id);
-        displayToDo();
-        }
-      return false;
-      });
 
     //complete button
     $('#toDoSquares').on('click', '#compBtn', function() {
